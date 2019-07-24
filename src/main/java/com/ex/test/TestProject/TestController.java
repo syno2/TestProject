@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @AllArgsConstructor
@@ -27,7 +28,12 @@ public class TestController {
     public String index(@PageableDefault Pageable pageable,Model model){
         List<Board> list = boardRepository.findAll();
 
+        Random rand = new Random();
+        int random = rand.nextInt(100)+1;
+        System.out.println(random);
+
         model.addAttribute("boardList",list);
+        model.addAttribute("random",random);
 
         return "index";
     }
