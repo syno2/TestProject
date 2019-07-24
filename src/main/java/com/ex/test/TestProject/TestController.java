@@ -1,8 +1,6 @@
 package com.ex.test.TestProject;
 
 import lombok.AllArgsConstructor;
-import org.aspectj.lang.annotation.After;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -54,11 +52,11 @@ public class TestController {
     }
 
     @PostMapping("/insert")
-    public String create(BoardInsertDTO dto){
+    public String create(Board board){
 
         boardRepository.save(Board.builder()
-                .boardName(dto.getTitle())
-                .article(dto.getContents())
+                .boardName(board.getBoardName())
+                .article(board.getArticle())
                 .writeDate(LocalDateTime.now())
                 .build());
 
