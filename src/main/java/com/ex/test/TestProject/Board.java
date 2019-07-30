@@ -24,13 +24,17 @@ public class Board {
     @Column(length = 500, nullable = false, name = "article")
     private String article;
 
+    @Column(nullable = false, name = "random_num")
+    private Integer randomNum;
+
     @Column
     private LocalDateTime writeDate;
 
     @Builder
-    public Board(String boardName,String article,LocalDateTime writeDate){
+    public Board(String boardName,String article,Integer randomNum,LocalDateTime writeDate){
         this.boardName = boardName;
         this.article = article;
+        this.randomNum = randomNum;
         this.writeDate = writeDate;
     }
 }

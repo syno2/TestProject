@@ -37,7 +37,6 @@
 </head>
 
 <body>
-
   <!-- Navigation -->
   <nav th:include="layout/navbar.html"></nav>
 
@@ -61,15 +60,15 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-preview" th:each="list : ${boardList}">
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped active" role="progressbar" th:style="'width:' + ${random} +'%'" th:text="${random}+'%'"></div>
-          </div>
           <a th:onclick="|javascript:showContent(${list.boardNo})|">
             <h2 class="post-title" th:text="${list.boardName}">
             </h2>
           </a>
             <h3 class="post-subtitle" th:text="${list.article}">
             </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" th:style="'width:' + ${list.randomNum} +'%'" th:text="${list.randomNum}+'%'"></div>
+            </div>
           <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             <th:block th:text="${list.writeDate}"></th:block></p>
