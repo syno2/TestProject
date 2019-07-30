@@ -26,12 +26,7 @@ public class TestController {
     public String index(@PageableDefault Pageable pageable,Model model){
         List<Board> list = boardRepository.findAll();
 
-        Random rand = new Random();
-        int random = rand.nextInt(100)+1;
-        System.out.println(random);
-
         model.addAttribute("boardList",list);
-        model.addAttribute("random",random);
 
         return "index";
     }
@@ -54,9 +49,18 @@ public class TestController {
     @PostMapping("/insert")
     public String create(Board board){
 
+        Random rand = new Random();
+        Integer random = rand.nextInt(100)+1;
+
+        System.out.println(random);
+
+        System.out.println(board.getArticle());
+        System.out.println(board.getBoardName());
+
         boardRepository.save(Board.builder()
                 .boardName(board.getBoardName())
                 .article(board.getArticle())
+                .randomNum(random)
                 .writeDate(LocalDateTime.now())
                 .build());
 
